@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CHAMBER — local stream</title>
+    <meta
+      name="description"
+      content="Stream your own media files from localhost in the browser."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true">
+      <div class="wash wash-a"></div>
+      <div class="wash wash-b"></div>
+      <div class="grain"></div>
+    </div>
+
+    <header class="top">
+      <a class="brand" href="/" aria-label="CHAMBER home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">CHAMBER</span>
+      </a>
+      <p class="top-note">localhost only · your files stay here</p>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Private screening room</p>
+          <h1 class="brand-hero">CHAMBER</h1>
+          <p class="lede">
+            Drop a video onto this machine and watch it stream in the browser —
+            seekable, local, nothing uploaded to the cloud.
+          </p>
+          <div class="cta-row">
+            <button type="button" class="btn primary" id="play-first">
+              Play sample
+            </button>
+            <label class="btn ghost" for="file-input">Add video</label>
+            <input
+              id="file-input"
+              type="file"
+              accept="video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov,.mkv,.m4v"
+              hidden
+            />
+          </div>
+        </div>
+        <div class="hero-stage" aria-hidden="true">
+          <div class="stage-frame">
+            <div class="stage-scan"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="theater" id="theater" hidden>
+        <div class="player-shell">
+          <video id="player" controls playsinline preload="metadata"></video>
+          <div class="now-playing">
+            <p class="now-label">Now playing</p>
+            <h2 id="now-title">—</h2>
+          </div>
+        </div>
+      </section>
+
+      <section class="library" id="library">
+        <div class="section-head">
+          <h2>On this machine</h2>
+          <p>Files in <code>stream/media</code> appear here automatically.</p>
+        </div>
+        <ul class="shelf" id="shelf"></ul>
+        <p class="empty" id="empty" hidden>No videos yet. Add one to start.</p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>
+        Running at <span id="origin">localhost</span> · range-request streaming
+      </p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
